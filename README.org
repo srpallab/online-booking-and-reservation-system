@@ -1,3 +1,12 @@
 #+TITLE: Online Reservation and Booking System
 #+AUTHOR: Shafiqur Rahman
-* 
+* Database Design
+  - Customer Table
+    |       |      |
+    |-------+------|
+    | id    | text |
+    | name  | text |
+    | phone | text |
+    |       |      |
+  - Employee Table
+  - Booking Table
