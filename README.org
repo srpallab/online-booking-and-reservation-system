@@ -1,12 +1,67 @@
 #+TITLE: Online Reservation and Booking System
 #+AUTHOR: Shafiqur Rahman
+* System Features 
+  - Administrator offer various reservations such as vehicles,
+    resorts, hotel rooms.
+  - Admin can check in or check out a customer.
+  - Admin can add customer details.
+  - Customer can book easily.
+  - Customer can update booking.
+  - Customer can make online payment.
+
 * Database Design
   - Customer Table
-    |       |      |
-    |-------+------|
-    | id    | text |
-    | name  | text |
-    | phone | text |
-    |       |      |
+    | column_name | type | key |
+    |-------------+------+-----|
+    | id          | text | pk  |
+    | name        | text |     |
+    | phone       | text |     |
+    | email       | text |     |
+    |             |      |     |
   - Employee Table
+    | column_name | type | key |
+    |-------------+----------+-----|
+    | id          | text     | pk  |
+    | name        | text     |     |
+    | phone       | text     |     |
+    | email       | text     |     |
+    | is_admin    | 0 or 1   |     |
+
+  - Vehicles Information Table
+    | column_name | type | key |
+    |-------------+------+-----|
+    | id          | text | pk  |
+    | name        | text |     |
+    | model       | text |     |
+    | description | text |     |
+    | price       | text |     |
+    
+  - Resort Information Table
+    | column_name | type | key |
+    |-------------+------+-----|
+    | id          | text | pk  |
+    | name        | text |     |
+    | address     | text |     |
+    | description | text |     |
+    | price       | text |     |
+
+  - Hotel Room Information Table
+    | column_name | type | key |
+    |-------------+------+-----|
+    | id          | text | pk  |
+    | name        | text |     |
+    | address     | text |     |
+    | description | text |     |
+    | room_type   | text |     |
+    | price       | text |     |
+
   - Booking Table
+    | column_name  | type   | key |
+    |--------------+--------+-----|
+    | id           | text   | pk  |
+    | booking_type | text   |     |
+    | customer_id  | number | fk  |
+    | employee_id  | number | fk  |
+    | product_id   | number | fk  |
+    | start_date   | date   |     |
+    | end_date     | date   |     |
