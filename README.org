@@ -10,13 +10,6 @@
   - Customer can make online payment.
 
 * Database Design
-  - Customer Table
-    | column_name | type | key |
-    |-------------+------+-----|
-    | id          | text | pk  |
-    | name        | text |     |
-    | phone       | text |     |
-    | email       | text |     |
   - Employee Table
     | column_name | type | key |
     |-------------+----------+-----|
@@ -25,6 +18,14 @@
     | phone       | text     |     |
     | email       | text     |     |
     | is_admin    | 0 or 1   |     |
+  - Customer Table
+    | column_name | type   | key |
+    |-------------+--------+-----|
+    | id          | text   | pk  |
+    | name        | text   |     |
+    | phone       | text   |     |
+    | email       | text   |     |
+    | employee_id | number | fk  |
 
   - Vehicles Information Table
     | column_name | type | key |
@@ -67,3 +68,9 @@
     | product_id   | number | fk  |
     | start_date   | date   |     |
     | end_date     | date   |     |
+
+* Database Relations
+  - One customer can book many vehicles, resorts, hotel rooms.
+  - One Admin can create many customers.
+  - One vehicles, resorts, hotel rooms can booked many times.
+
