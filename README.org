@@ -17,7 +17,6 @@
     | name        | text |     |
     | phone       | text |     |
     | email       | text |     |
-    |             |      |     |
   - Employee Table
     | column_name | type | key |
     |-------------+----------+-----|
@@ -35,6 +34,7 @@
     | model       | text |     |
     | description | text |     |
     | price       | text |     |
+    | image_link | text |     |
     
   - Resort Information Table
     | column_name | type | key |
@@ -44,6 +44,7 @@
     | address     | text |     |
     | description | text |     |
     | price       | text |     |
+    | image_link  | text |     |
 
   - Hotel Room Information Table
     | column_name | type | key |
@@ -54,7 +55,8 @@
     | description | text |     |
     | room_type   | text |     |
     | price       | text |     |
-
+    | image_link  | text |     |
+    
   - Booking Table
     | column_name  | type   | key |
     |--------------+--------+-----|
