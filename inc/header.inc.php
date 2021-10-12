@@ -7,4 +7,4 @@
     <link href="./assets/css/style.css" rel="stylesheet"/>
     <title>Online Reservation and Booking System</title>
   </head>
-  <body>
+
