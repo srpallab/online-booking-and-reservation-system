@@ -7,7 +7,13 @@ class ProductView extends Product {
     $products = $this->getProduct($type);
 
     return $products;
-  } 
+  }
+
+  public function showSingleProduct($id) {
+    $product = $this->getSingleProduct($id);
+
+    return $product;
+  }
   
   
 }

@@ -2,43 +2,49 @@
 require_once "./inc/header.inc.php";
 require_once "./class/productview.class.php";
 ?>
-<body class="bg-gray-200">
-  <div class="bg-white">
-    <?php require "./inc/navbar.inc.php" ?>
-  </div>
 
-<div class="flex justify-center items-center">
-  <div class=" w-full">
-    <!--
-	 <div class="container mx-auto flex p-5 justify-center">
-	 <h1 class="m-2 p-2 text-center text-2xl">FROM</h1>
-	 <input name="todate" type="date" class="m-2 p-2 text-center border border-gray-200" />
-	 <h1 class="m-2 p-2 text-center text-2xl">TO</h1>
-	 <input name="enddate" type="date" class="m-2 p-2 text-center border border-gray-200" />
-	 <button class="m-2 py-2 px-10 text-center bg-gradient-to-b from-green-300 to-green-600 border 
-	 focus:border-green-900 text-white rounded-lg">FIND</button>
-	 </div>
-    -->
-  <div class="grid grid-cols-4 gap-5 container mx-auto my-5">
-	<?php
-	$productsObj = new ProductView();
-	// print_r($_GET);
-	// die();
-	$products = $productsObj->showProducts($_GET['type']);
-	// print_r($products);
-	// die();
-	foreach($products as $key=>$product){
-	?>
-	  <div class="flex flex-col justify-center border border-gray-300 rounded px-5 pb-5 shadow">
-	    <img alt="" src="<?= $product['image_link'] ?>"/>
-	    <h1 class="text-2xl text-center"><?= $product['name'] ?></h1>
-	    <p class="text-lg">Model: <?= $product['model'] ?></p>
-	    <p class="text-lg">Price: <?= $product['price'] ?></p>
-	    <button class="py-2 px-5 bg-green-500 text-white rounded">Book Now</button>
-	  </div>
-	<?php }; ?>
-      
-    </div>
+
+<body>
+  <?php require_once "./inc/navbar.inc.php" ?>
+  <div class="bg-yellow-300 py-10 ">
+    <h1 class="text-2xl text-center font-bold">COMPLETE RESERVATION</h1>
   </div>
-</div>
-<?php require "./inc/footer.inc.php" ?>
+  <div class="container mx-auto">
+     <div class="flex justify-between items-center">
+       <div>
+	 <form method="POST" action="inc/booking.inc.php?id=<?= $_GET['id'] ?>" class="grid grid-cols-1 gap-5">
+	   <div class="flex" >
+	     <span class="border bg-gray-200 py-3 px-10 w-40">Start Date </span>
+	     <input class="py-3 px-10 border flex-grow" name="startdate" type="date"  />
+	   </div>
+	   <div class="flex" >
+	     <span class="border bg-gray-200 py-3 px-10 w-40">End Date</span>
+	     <input name="enddate" type="date"  class="py-3 px-10 border flex-grow" />
+	   </div>
+	   <div class="flex" >
+	     <span class="border bg-gray-200 py-3 px-10 w-40">Full Name</span>
+	     <input name="name" type="text" class="py-3 px-10 border flex-grow"  />
+	   </div>
+	   <div class="flex" >
+	     <span class="border bg-gray-200 py-3 px-10 w-40">Phone:</span>
+	     <input name="phone" type="text" class="py-3 px-10 border flex-grow" />
+	   </div>
+	   <div class="flex" >
+	     <span class="border bg-gray-200 py-3 px-10 w-40">Email</span>
+	     <input name="email" type="email"  class="py-3 px-10 border flex-grow" />
+	   </div>
+	   <button class="px-5 py-2 bg-green-500 text-white rounded">BOOK NOW</button>
+	 </form>
+       </div>
+       <div>
+	 <?php
+	 $productObj = new ProductView();
+	 $product = $productObj->showSingleProduct($_GET['id']);
+	 // print_r($product);
+	 // die();
+	 ?>
+	 <img alt="" src="<?= $product[0]['image_link'] ?>"/>
+       </div>
+     </div>
+  </div>
+<?php require_once "./inc/footer.inc.php" ?>

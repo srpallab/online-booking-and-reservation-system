@@ -12,5 +12,14 @@ class Product extends Dbh {
     return $results;
   }
 
+  protected function getSingleProduct($id){
+    $sql = "SELECT * FROM product_information WHERE id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+    $result = $stmt->fetchAll();
+
+    return $result;
+  }
+
   // private function setProduct(){}
 }
