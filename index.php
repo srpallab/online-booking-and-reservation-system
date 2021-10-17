@@ -1,5 +1,8 @@
-<?php require "./inc/header.inc.php" ?>
+<?php
+require "./inc/header.inc.php";
+?>
 <body>
+  <?php require_once "./inc/navbar.inc.php" ?>
 <div class="bg-gradient-to-t from-blue-500 to-blue-800">
   <div class="container mx-auto flex items-center flex-col h-screen justify-center">
     <h1 class="text-6xl text-center text-white">Online Reservation and Booking System</h1>

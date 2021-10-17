@@ -1,5 +1,5 @@
 <?php
-require_once "../class/dbh.class.php";
+require_once "dbh.class.php";
 
 class Booking extends Dbh {
 
@@ -17,5 +17,43 @@ class Booking extends Dbh {
     }
     
   }
+  
+  protected function getBooking(){
+    $sql = "SELECT * FROM booking";
+    $stmt = $this->connect()->prepare($sql);
+    try{
+      $stmt->execute();
+    } catch (Exception $e){
+      print($e);
+      // die();
+    }
+    $result = $stmt->fetchAll();
+    // print_r($result);
+    // die();
+    return $result;
+  }
+
+  protected function setCheckIn($id){
+    $sql = "UPDATE booking SET checked_in_out = 1 WHERE id = ?";
+    
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+    
+  }
+
+  protected function setCheckOut($id){
+    $sql = "UPDATE booking SET checked_in_out = 0 WHERE id = ?";
+    
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+    
+  }
+
+  protected function delBooking($id){
+    $sql = "DELETE FROM booking WHERE id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+  }
+  
   
 }

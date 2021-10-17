@@ -2,7 +2,14 @@
 require_once "dbh.class.php";
 
 class Customer extends Dbh {
-  protected function getCustomer(){}
+  protected function getCustomer($id){
+    $sql = "SELECT * FROM customer WHERE id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$id]);
+    $result = $stmt->fetchAll();
+
+    return $result;
+  }
 
   protected function setCustomer($name, $phone, $email){
     $sql = "INSERT INTO customer (name, phone, email) VALUES (?, ?, ?);";
