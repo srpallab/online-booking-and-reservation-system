@@ -1,12 +1,19 @@
 <?php
+
 require_once "booking.class.php";
 
 class BookingContr extends Booking {
 
   public function bookProduct($startdate, $enddate, $productID, $customerId) {
-    // print_r([$startdate, $enddate, $productID, $customerId]);
+    // print_r([$startdate, $enddate, $productID, $customerId, $_SESSION['user_id']]);
     // die();
-    $this->setBooking($startdate, $enddate, $productID, $customerId);
+    if(isset($_SESSION['isAdmin'])){
+      $this->setBooking($startdate, $enddate, $productID, $customerId);
+    } elseif(isset($_SESSION[user_id])){
+      $this->setBooking($startdate, $enddate, $productID, $_SESSION[user_id]);
+    } else {
+      $this->setBooking($startdate, $enddate, $productID, $customerId);
+    }
   }
 
   public function allBookings(){
@@ -16,6 +23,13 @@ class BookingContr extends Booking {
     return $results;
   }
 
+  public function cusBookings($id){
+    $results = $this->getCusBooking($id);
+    // print_r($results);
+    // die();
+    return $results;
+  }
+  
   public function checkIn($id){
     $this->setCheckIn($id);
   }

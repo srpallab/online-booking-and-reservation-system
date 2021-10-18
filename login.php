@@ -9,10 +9,17 @@
 	     type="email" placeholder="Email" required/>
       <input class="px-2 py-3 mb-5 border border-gray-300" name="pwd"
 	     type="password" placeholder="Password" required/>
-      <button type="submit" name="submit" value="login"
+      <?php if($_GET['type'] == 'emp') { ?>
+      <button type="submit" name="submit" value="emplogin"
 	      class="bg-green-500 text-white py-3">
 	LOGIN
       </button>
+      <?php } else { ?>
+      <button type="submit" name="submit" value="cuslogin"
+	      class="bg-green-500 text-white py-3">
+	LOGIN
+      </button>
+      <?php } ?>
     </form>
   </div>
 

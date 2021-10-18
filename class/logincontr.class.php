@@ -19,10 +19,18 @@ class LoginContr extends Login {
     $this->getUser($this->email, $this->pwd);
   }
 
+  public function loginCus(){
+    if($this->emptyInput() == false){
+      header('location: ../index.php?error=emptyinput');
+    }
+
+    $this->getCustomer($this->email, $this->pwd);
+  }
+
   private function emptyInput(){
     $result = true;
     if(empty($this->email) || empty($this->pwd)){
-        $result = false;
+      $result = false;
     } 
     return $result;
   }

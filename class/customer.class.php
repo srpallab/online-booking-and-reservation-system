@@ -20,4 +20,13 @@ class Customer extends Dbh {
     // die();
     return $conn->lastInsertId();
   }
+
+  protected function setSignUp($name, $phone, $email, $pwd){
+    $sql = "INSERT INTO customer (name, phone, email, password) ";
+    $sql .= "VALUES (?, ?, ?, ?);";
+    $conn = $this->connect();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$name, $phone, $email, $pwd]);
+  }
+  
 }

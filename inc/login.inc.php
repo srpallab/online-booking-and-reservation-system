@@ -10,10 +10,13 @@ if(isset($_POST['submit'])){
   include "../class/logincontr.class.php";
 
   $login = new LoginContr($email, $pwd);
-  $login->loginUser();
+
+  if($_POST['submit'] == 'emplogin'){
+    $login->loginUser();
+  } else{
+    $login->loginCus();
+  }
   
-}else{
+} else {
   header('location: ../index.php?error=unauthorized');
 }
-
-?>

@@ -33,6 +33,21 @@ class Booking extends Dbh {
     return $result;
   }
 
+  protected function getCusBooking($id){
+    $sql = "SELECT * FROM booking where customer_id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    try{
+      $stmt->execute([$id]);
+    } catch (Exception $e){
+      print($e);
+      // die();
+    }
+    $result = $stmt->fetchAll();
+    // print_r($result);
+    // die();
+    return $result;
+  }
+
   protected function setCheckIn($id){
     $sql = "UPDATE booking SET checked_in_out = 1 WHERE id = ?";
     

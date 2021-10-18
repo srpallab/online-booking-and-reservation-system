@@ -44,7 +44,6 @@
 	<td class="border border-green-600 p-2">
 	  <?= $booking['end_date'] ?>
 	</td>
-	
 	<td class="border border-green-600 p-2"><?= $product[0]['price'] ?></td>
 	<td class="border border-green-600 p-2">
 	  <form action="./inc/checkinorout.inc.php"
